@@ -31,6 +31,9 @@ func TestArray(t *testing.T) {
 	for i := 0; i < a.Size(); i++ {
 		a.Set(i, i)
 	}
+
+	neg := a.At(-1)
+	assert.Equal(t, neg, a.Back())
 }
 
 func TestNewFromArray(t *testing.T) {
