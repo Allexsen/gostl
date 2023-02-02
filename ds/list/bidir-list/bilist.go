@@ -39,6 +39,10 @@ func (list *List[T]) Tail() *Node[T] {
 	return list.tail
 }
 
+func (list *List[T]) Empty() bool {
+	return list.len == 0
+}
+
 func (list *List[T]) Len() int {
 	return list.len
 }
@@ -71,6 +75,16 @@ func (list *List[T]) PushBack(val T) {
 	}
 
 	list.len++
+}
+
+// Deletes head
+func (list *List[T]) PopFront() *Node[T] {
+	return list.Remove(list.head)
+}
+
+// Deletes tail
+func (list *List[T]) PopBack() *Node[T] {
+	return list.Remove(list.tail)
 }
 
 // Inserts a new node after the given node

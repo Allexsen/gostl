@@ -66,6 +66,11 @@ func (list *List[T]) PushBack(val T) {
 	list.len++
 }
 
+// Deletes head
+func (list *List[T]) PopFront() *Node[T] {
+	return list.Remove(nil, list.head)
+}
+
 // Inserts a new node after the given node
 func (list *List[T]) InsertAfter(val T, node *Node[T]) *Node[T] { // Returns the inserted node
 	newNode := &Node[T]{Value: val}
