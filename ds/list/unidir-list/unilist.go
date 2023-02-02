@@ -82,6 +82,7 @@ func (list *List[T]) InsertAfter(val T, node *Node[T]) *Node[T] {
 	return newNode
 }
 
+// prev MUST be right before the node, otherwise list.len will miscount
 func (list *List[T]) Remove(prev, node *Node[T]) *Node[T] {
 	if node == nil {
 		return nil
