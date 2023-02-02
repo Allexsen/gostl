@@ -43,6 +43,7 @@ func (list *List[T]) Len() int {
 	return list.len
 }
 
+// Insert a new head node
 func (list *List[T]) PushFront(val T) {
 	newNode := &Node[T]{Value: val}
 	if list.len == 0 { // List is empty
@@ -57,6 +58,7 @@ func (list *List[T]) PushFront(val T) {
 	list.len++
 }
 
+// Insert a new tail node
 func (list *List[T]) PushBack(val T) {
 	newNode := &Node[T]{Value: val}
 	if list.len == 0 { // List is empty
@@ -71,6 +73,7 @@ func (list *List[T]) PushBack(val T) {
 	list.len++
 }
 
+// Insert after the given node
 func (list *List[T]) InsertAfter(val T, node *Node[T]) *Node[T] {
 	newNode := &Node[T]{Value: val}
 	if list.len == 0 { // List is empty
@@ -95,6 +98,7 @@ func (list *List[T]) InsertAfter(val T, node *Node[T]) *Node[T] {
 	return newNode
 }
 
+// Insert before the given node
 func (list *List[T]) InsertBefore(val T, node *Node[T]) *Node[T] {
 	var newNode *Node[T]
 	if node == nil { // node becomes new tail
@@ -107,6 +111,7 @@ func (list *List[T]) InsertBefore(val T, node *Node[T]) *Node[T] {
 	return newNode
 }
 
+// Delete the given node
 func (list *List[T]) Remove(node *Node[T]) *Node[T] { // Returns a previous node. If head is removed, returns new head
 	if node == nil {
 		return nil
@@ -142,6 +147,7 @@ func (list *List[T]) Remove(node *Node[T]) *Node[T] { // Returns a previous node
 	return prevNode
 }
 
+// Set the given node as a new head
 func (list *List[T]) SetHead(node *Node[T]) {
 	if node == nil || node.prev == nil { // Node doesn't exist or it's a head already
 		return
@@ -160,6 +166,7 @@ func (list *List[T]) SetHead(node *Node[T]) {
 	list.head = node
 }
 
+// Set the given node as a new tail
 func (list *List[T]) SetTail(node *Node[T]) {
 	if node == nil || node.next == nil { // Node doesn't exist or it's a tail already
 		return
@@ -178,6 +185,7 @@ func (list *List[T]) SetTail(node *Node[T]) {
 	list.tail = node
 }
 
+// Stringify the list
 func (list *List[T]) String() string {
 	var sb strings.Builder
 	sb.WriteString("nil->")
