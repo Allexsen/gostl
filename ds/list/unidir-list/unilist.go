@@ -66,10 +66,19 @@ func (list *List[T]) PushBack(val T) {
 
 func (list *List[T]) InsertAfter(val T, node *Node[T]) *Node[T] {
 	newNode := &Node[T]{Value: val}
-	newNode.next = node.next
-	node.next = newNode
-	list.len++
+	if node == nil {
+		newNode.next = list.head
+		list.head = newNode
+	} else {
+		newNode.next = node.next
+		node.next = newNode
+	}
 
+	if newNode.next == nil {
+		list.tail = newNode
+	}
+
+	list.len++
 	return newNode
 }
 
