@@ -98,7 +98,7 @@ func (list *List[T]) Remove(prev, node *Node[T]) *Node[T] { // Returns the remov
 	}
 
 	list.len--
-	if list.len == 1 { // Node to remove is the only node
+	if list.len == 0 { // Node to remove is the only node
 		list.head = nil
 		list.tail = nil
 	} else if node == list.head { // Node to remove is a head
@@ -148,11 +148,12 @@ func (list *List[T]) SetTail(prev, node *Node[T]) {
 // Stringifies the list
 func (list *List[T]) String() string {
 	var sb strings.Builder
+	sb.WriteString("[")
 	for node := list.head; node != nil; node = node.next {
 		sb.WriteString(fmt.Sprintf("%v", node.Value))
 		sb.WriteString("->")
 	}
 
-	sb.WriteString("nil")
+	sb.WriteString("nil]")
 	return sb.String()
 }
