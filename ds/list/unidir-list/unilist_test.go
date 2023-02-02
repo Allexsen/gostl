@@ -22,11 +22,11 @@ func TestList(t *testing.T) {
 	list.PushBack(4)
 	assert.Equal(t, "2->1->3->4->nil", list.String())
 
-	list.MakeHead(list.Head(), list.Head().Next())
+	list.SetHead(list.Head(), list.Head().Next())
 
 	assert.Equal(t, "1->2->3->4->nil", list.String())
 
-	list.MakeTail(list.Head(), list.Head().Next())
+	list.SetTail(list.Head(), list.Head().Next())
 
 	assert.Equal(t, "1->3->4->2->nil", list.String())
 }

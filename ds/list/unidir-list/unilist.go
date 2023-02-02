@@ -104,7 +104,8 @@ func (list *List[T]) Remove(prev, node *Node[T]) *Node[T] {
 	return node
 }
 
-func (list *List[T]) MakeHead(prev, node *Node[T]) {
+// Shifts that specific node as a list head
+func (list *List[T]) SetHead(prev, node *Node[T]) {
 	if node == nil || prev == nil || prev.next != node {
 		return
 	}
@@ -118,7 +119,8 @@ func (list *List[T]) MakeHead(prev, node *Node[T]) {
 	list.head = node
 }
 
-func (list *List[T]) MakeTail(prev, node *Node[T]) {
+// Shifts that specific node as a list tail
+func (list *List[T]) SetTail(prev, node *Node[T]) {
 	if node == nil || list.len < 2 {
 		return
 	}
