@@ -189,6 +189,7 @@ func (list *List[T]) SetTail(node *Node[T]) {
 	list.tail = node
 }
 
+// Clears the list
 func (list *List[T]) Clear() {
 	list.head = nil
 	list.len = 0
