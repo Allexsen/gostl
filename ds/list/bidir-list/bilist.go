@@ -189,6 +189,11 @@ func (list *List[T]) SetTail(node *Node[T]) {
 	list.tail = node
 }
 
+func (list *List[T]) Clear() {
+	list.head = nil
+	list.len = 0
+}
+
 // Stringify the list
 func (list *List[T]) String() string {
 	if list.len == 0 {

@@ -145,6 +145,11 @@ func (list *List[T]) SetTail(prev, node *Node[T]) {
 	node.next = nil
 }
 
+func (list *List[T]) Clear() {
+	list.head = nil
+	list.len = 0
+}
+
 // Stringifies the list
 func (list *List[T]) String() string {
 	var sb strings.Builder
