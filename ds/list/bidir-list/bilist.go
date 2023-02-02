@@ -43,7 +43,7 @@ func (list *List[T]) Len() int {
 	return list.len
 }
 
-// Insert a new head node
+// Inserts a new node as a new head
 func (list *List[T]) PushFront(val T) {
 	newNode := &Node[T]{Value: val}
 	if list.len == 0 { // List is empty
@@ -58,7 +58,7 @@ func (list *List[T]) PushFront(val T) {
 	list.len++
 }
 
-// Insert a new tail node
+// Appends a new node as a new tail
 func (list *List[T]) PushBack(val T) {
 	newNode := &Node[T]{Value: val}
 	if list.len == 0 { // List is empty
@@ -73,7 +73,7 @@ func (list *List[T]) PushBack(val T) {
 	list.len++
 }
 
-// Insert after the given node
+// Inserts a new node after the given node
 func (list *List[T]) InsertAfter(val T, node *Node[T]) *Node[T] {
 	newNode := &Node[T]{Value: val}
 	if list.len == 0 { // List is empty
@@ -112,39 +112,29 @@ func (list *List[T]) InsertBefore(val T, node *Node[T]) *Node[T] {
 }
 
 // Delete the given node
-func (list *List[T]) Remove(node *Node[T]) *Node[T] { // Returns a previous node. If head is removed, returns new head
-	if node == nil {
+func (list *List[T]) Remove(node *Node[T]) *Node[T] { // Returns the removed node
+	if node == nil { // Node doesn't exist
 		return nil
 	}
 
 	list.len--
-	if list.len == 1 { // List becomes empty
+	if list.len == 1 { // Node to remove is the only node
 		list.head = nil
 		list.tail = nil
-		node = nil
-		return nil
-	}
-
-	if list.head == node { // Node to remove is head
+	} else if list.head == node { // Node to remove is a head
 		node = node.next
 		list.head = node
 		node.prev = nil
-		return list.head
-	}
-
-	if list.tail == node { // Node to remove is tail
+	} else if list.tail == node { // Node to remove isa  tail
 		node = node.prev
 		list.tail = node
 		node.next = nil
-		return list.tail
+	} else { // Node to remove is inbetween two other nodes
+		node.next.prev = node.prev
+		node.prev.next = node.next
 	}
 
-	// Node to remove inbetween two other nodes
-	node.next.prev = node.prev
-	node.prev.next = node.next
-	prevNode := node.prev
-	node = nil
-	return prevNode
+	return node
 }
 
 // Set the given node as a new head
@@ -154,7 +144,7 @@ func (list *List[T]) SetHead(node *Node[T]) {
 	}
 
 	node.prev.next = node.next
-	if node.next == nil { // Node is tail
+	if node.next == nil { // Node is a tail
 		list.tail = node.prev
 	} else { // Node is inbetween two other nodes
 		node.next.prev = node.prev
@@ -173,7 +163,7 @@ func (list *List[T]) SetTail(node *Node[T]) {
 	}
 
 	node.next.prev = node.prev
-	if node.prev == nil { // Node is head
+	if node.prev == nil { // Node is a head
 		list.head = node.next
 	} else { // Node is inbetween two other nodes
 		node.prev.next = node.next
