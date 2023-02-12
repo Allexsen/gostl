@@ -40,7 +40,7 @@ func (dq *Deque[T]) Back() T {
 }
 
 func (dq *Deque[T]) PopFront() T {
-	return dq.values.PopBack().Value
+	return dq.values.PopFront().Value
 }
 
 func (dq *Deque[T]) PopBack() T {

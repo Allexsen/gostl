@@ -49,7 +49,6 @@ func (list *List[T]) Len() int {
 
 // Inserts a new node as a new head
 func (list *List[T]) PushFront(val T) {
-	list.len++
 	newNode := &Node[T]{Value: val}
 	if list.len == 0 { // List is empty
 		list.head = newNode
@@ -59,11 +58,11 @@ func (list *List[T]) PushFront(val T) {
 		newNode.next.prev = newNode
 		list.head = newNode
 	}
+	list.len++
 }
 
 // Appends a new node as a new tail
 func (list *List[T]) PushBack(val T) {
-	list.len++
 	newNode := &Node[T]{Value: val}
 	if list.len == 0 { // List is empty
 		list.head = newNode
@@ -73,6 +72,7 @@ func (list *List[T]) PushBack(val T) {
 		newNode.prev.next = newNode
 		list.tail = newNode
 	}
+	list.len++
 }
 
 // Deletes head
@@ -134,13 +134,11 @@ func (list *List[T]) Remove(node *Node[T]) *Node[T] { // Returns the removed nod
 		list.head = nil
 		list.tail = nil
 	} else if list.head == node { // Node to remove is a head
-		node = node.next
-		list.head = node
-		node.prev = nil
+		list.head = node.next
+		list.head.prev = nil
 	} else if list.tail == node { // Node to remove isa  tail
-		node = node.prev
-		list.tail = node
-		node.next = nil
+		list.tail = node.prev
+		list.tail.next = nil
 	} else { // Node to remove is inbetween two other nodes
 		node.next.prev = node.prev
 		node.prev.next = node.next
