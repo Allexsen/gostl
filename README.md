@@ -11,3 +11,5 @@ Currently PARTIALLY avaiable:
 - [Stack](https://github.com/Allexsen/gostl/tree/main/ds/stack)
 - [Unidirectional Linked List](https://github.com/Allexsen/gostl/tree/main/ds/list/unidir-list)
 - [Bidirectional Linked List](https://github.com/Allexsen/gostl/tree/main/ds/list/bidir-list)
+- [Queue](https://github.com/Allexsen/gostl/tree/main/ds/queue)
+- [Deque](https://github.com/Allexsen/gostl/tree/main/ds/deque)
