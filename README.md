@@ -2,7 +2,7 @@
 
 DSA Library for GoLang. Inspired by STL in C++
 
-# Please note that the library is still under development
+# Hopefully will get back to this anytime soon ;D
 
 The README will update according to the upcoming additions
 
